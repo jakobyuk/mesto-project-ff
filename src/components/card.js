@@ -1,7 +1,4 @@
-import { showImagePopup } from './modal.js';
-
 const cardTemplate = document.querySelector('#card-template');
-const placesList = document.querySelector('.places__list');
 
 function deleteCard(event) {
   const card = event.target.closest('.card');
@@ -14,7 +11,8 @@ function likeCard(event) {
   heart.classList.toggle('card__like-button_is-active'); 
 }
 
-function createCard(cardContent) {
+//передала функции удаления карточки, демонстрации попапа, обработчик лайка как параметры 
+function createCard(cardContent, deleteCard, likeCard, showImagePopup) {
   const cardElement = cardTemplate.content.cloneNode(true);
 
   const cardImage = cardElement.querySelector('.card__image');
@@ -31,15 +29,4 @@ function createCard(cardContent) {
   return cardElement;
 }
 
-function renderCard(cardContent) {
-  const cardElement = createCard(cardContent);
-  placesList.appendChild(cardElement);
-  }
-
- //функция для добавления новой карточки через модалку
-function addCard(newCardContent) {
-  const cardElement = createCard(newCardContent);
-  placesList.prepend(cardElement);
-  }
-
-export { deleteCard, createCard, renderCard, addCard };
+export { createCard, likeCard, deleteCard};
