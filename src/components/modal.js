@@ -1,7 +1,3 @@
-const popupProfileEdit = document.querySelector('.popup_type_edit');
-const popupAddCard = document.querySelector('.popup_type_new-card');
-const popupImage = document.querySelector('.popup_type_image');
-
 const handleEscKeyUp = (event) => {
   if (event.key === 'Escape') {
     const popup = document.querySelector('.popup_is-opened'); 
@@ -33,4 +29,3 @@ const addEventListenerFunction = (popupElement) => {
 }
 
 export { openModal, closeModal, addEventListenerFunction};
-export { popupProfileEdit, popupAddCard, popupImage };

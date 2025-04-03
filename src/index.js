@@ -2,9 +2,13 @@ import './pages/index.css';
 import { createCard, likeCard, deleteCard } from './components/card.js';
 import { initialCards } from './components/cards.js';
 import { openModal, closeModal, addEventListenerFunction } from './components/modal.js';
-import { popupProfileEdit, popupAddCard, popupImage } from './components/modal.js';
 
 const placesList = document.querySelector('.places__list');
+
+//модалки
+const popupProfileEdit = document.querySelector('.popup_type_edit');
+const popupAddCard = document.querySelector('.popup_type_new-card');
+const popupImage = document.querySelector('.popup_type_image');
 
 //элементы на которые весим окна
 const editButton = document.querySelector('.profile__edit-button');
@@ -46,7 +50,7 @@ initialCards.forEach(cardContent => {
 });
 
 //код для заполнения инпутов 
-const fillInputs = () => {
+const fillEditFormInputs = () => {
   const nameInput = document.forms['edit-profile'].elements.name;
   const jobInput = document.forms['edit-profile'].elements.description;
 
@@ -97,7 +101,7 @@ addCardForm.addEventListener('submit', handleAddCardFormSubmit);
 
 //повесили обработчики событий для открытия модальных окон
 editButton.addEventListener('click', () => {
-  fillInputs(); //заполняем инпуты перед открытием попапа
+  fillEditFormInputs(); //заполняем инпуты перед открытием попапа
   openModal(popupProfileEdit); 
 });
 addCardButton.addEventListener('click', () => openModal(popupAddCard));
