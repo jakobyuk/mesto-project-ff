@@ -13,3 +13,20 @@
   position: relative;
   overflow: hidden;
 }
+
+.card__like-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.card__like-counter {
+  color: #000;
+  font-size: 13px;
+  text-align: center;
+  display: none;
+}
+
+.card__like-counter_is-active {
+  display: inline-block;
+}
