@@ -83,11 +83,9 @@ const setEventListeners = (formElement, inputSelector, inputErrorClass, errorCla
 };
 
 
-//
 //функция которая найдёт и переберёт все формы на странице. вызовем ее в index js
 const enableValidation = ({formSelector, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass,
   errorClass}) => {
-    //think about formList
   const formList = Array.from(document.querySelectorAll(formSelector));
   
 formList.forEach((formElement) => {

@@ -51,7 +51,7 @@ const addNewCard = (nameCard, linkCard) => {
   }).then((res) => checkResponse(res));
 };
 
-//отображение количества лайков карточки
+//лайк карточки
 const putLike = (cardId) => {
   return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: "PUT",
@@ -69,16 +69,23 @@ const deleteLike = (cardId) => {
 
 
 //удаление карточки
-const deleteCardFromServer = (cardId) => {
+const deleteCard = (cardId) => {
   return fetch(`${config.baseUrl}/cards/${cardId}`, {
     method: "DELETE",
     headers: config.headers,
   }).then((res) => checkResponse(res));
 };
 
-
-
 //oбновление аватара пользователя
+const updateAvatar = (avatarLink) => {
+  return fetch(`${config.baseUrl}/users/me/avatar`, {
+    method: "PATCH",
+    headers: config.headers,
+    body: JSON.stringify({
+      avatar: avatarLink,
+    }),
+  }).then((res) => checkResponse(res));
+};
 
 
-export { config, checkResponse, getUserInfo, getInitialCards, editProfile, addNewCard, putLike, deleteLike, deleteCardFromServer };
+export { config, checkResponse, getUserInfo, getInitialCards, editProfile, addNewCard, putLike, deleteLike, deleteCard, updateAvatar };
