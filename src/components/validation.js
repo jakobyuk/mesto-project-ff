@@ -1,13 +1,3 @@
-//классы для валидации
-const validationConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible',
-};
-
 //функция добавляет класс с ошибкой и показывает ее
 const showInputError = (formElement, inputElement, errorMessage, inputErrorClass, errorClass) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -51,8 +41,6 @@ const hasInvalidInput = (inputList) => {
 }
 
 //включает и отключает кнопку сохранить
-//заранее вызываем внутри setEventListeners
-//или не элемент а кнопка?
 const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
   if(hasInvalidInput(inputList)) {
     buttonElement.disabled = true;
@@ -65,7 +53,6 @@ const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
 };
 
 
-//не те классы 
 //добавляет слушатели всем полям ввода внутри формы
 const setEventListeners = (formElement, inputSelector, inputErrorClass, errorClass, submitButtonSelector, inactiveButtonClass) => {
 
@@ -83,7 +70,7 @@ const setEventListeners = (formElement, inputSelector, inputErrorClass, errorCla
 };
 
 
-//функция которая найдёт и переберёт все формы на странице. вызовем ее в index js
+//функция которая найдёт и переберёт все формы на странице
 const enableValidation = ({formSelector, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass,
   errorClass}) => {
   const formList = Array.from(document.querySelectorAll(formSelector));
@@ -118,4 +105,4 @@ const clearValidation = (formElement, validationConfig) => {
   );
 }
 
-export { enableValidation, clearValidation, validationConfig };
+export { enableValidation, clearValidation };
