@@ -119,6 +119,12 @@ function handleEditFormSubmit(evt) {
   })
 };
 
+ //функция для добавления новой карточки через модалку
+ function addCard(newCardContent, userId) {
+  const cardElement = createCard(newCardContent, likeCard, showImagePopup, userId, handleCardDelete);
+  placesList.prepend(cardElement);
+  }
+
 //обработчик формы с добавлением карточки
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault(); 
@@ -140,7 +146,7 @@ function handleAddCardFormSubmit(evt) {
     addCardForm.reset();
   })
   .catch(error => {
-    console.error(error)
+    console.error(error);
   })
   .finally(() => {
     showLoading(false, popupAddCard.querySelector('.popup__button'));
@@ -157,12 +163,6 @@ function handleCardDelete(cardId, cardElement) {
       console.error(error);
     });
 }
-
- //функция для добавления новой карточки через модалку
- function addCard(newCardContent, userId) {
-  const cardElement = createCard(newCardContent, likeCard, showImagePopup, userId, handleCardDelete);
-  placesList.prepend(cardElement);
-  }
 
 //прикрепляем обработчики к формам
 editForm.addEventListener('submit', handleEditFormSubmit);
@@ -183,7 +183,6 @@ profileImage.addEventListener('click', () => {
   clearValidation(editAvatarForm, validationConfig);
   openModal(popupAvatarEdit);
 })
-
 
 //слушатели для закрытия окон
 addEventListenerFunction(popupProfileEdit);
